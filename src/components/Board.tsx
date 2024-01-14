@@ -4,9 +4,10 @@ interface BoardProps {
   xIsNext: boolean
   squares: string[]
   onPlay: (nextSquares: string[]) => void
+  onRestart: () => void
 }
 
-export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
+export default function Board({ xIsNext, squares, onPlay, onRestart }: BoardProps) {
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return
@@ -53,6 +54,7 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
           </tr>
         </tbody>
       </table>
+      {winner && <button className="restart-button" onClick={onRestart}>Restart Game</button>}
     </>
   )
 }

@@ -56,3 +56,9 @@ button {
   justify-content: center;
   gap: 20px;
 }
+
+.restart-button {
+  font-size: 24px;
+  margin: 12px auto;
+  padding: 12px;
+}

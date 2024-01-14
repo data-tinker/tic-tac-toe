@@ -17,6 +17,11 @@ export default function Game() {
     setCurrentMove(nextMove)
   }
 
+  function handleRestart() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   const moves = history.map((_, move) => {
     const description = move > 0 ? `Go to move #${move}` : 'Go to game start';
     return (
@@ -30,7 +35,7 @@ export default function Game() {
     <div className="game">
       <div className="board">
         <h2>Tic Tac Toe</h2>
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} onRestart={handleRestart} />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
