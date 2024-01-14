@@ -24,10 +24,13 @@ export default function Board({ xIsNext, squares, onPlay, onRestart }: BoardProp
 
   const winner = calculateWinner(squares)
   let status
+  let isOver = false
   if (winner) {
     status = "Winner: " + winner
+    isOver = true
   } else if (squares.every((square) => square != null)) {
     status = "Draw"
+    isOver = true
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O")
   }
@@ -54,7 +57,7 @@ export default function Board({ xIsNext, squares, onPlay, onRestart }: BoardProp
           </tr>
         </tbody>
       </table>
-      {winner && <button className="restart-button" onClick={onRestart}>Restart Game</button>}
+      {isOver && <button className="restart-button" onClick={onRestart}>Restart Game</button>}
     </>
   )
 }
